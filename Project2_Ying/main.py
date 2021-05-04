@@ -356,6 +356,8 @@ class Model(pygame.sprite.Sprite):
 		armLength=40
 		swordLength=100
 		
+
+
 		if mouseVector.length()>140:
 			self.newArmVector=pygame.Vector2(self.deltaX,self.deltaY)	
 			self.newArmVector.scale_to_length(40)
@@ -382,6 +384,7 @@ class Model(pygame.sprite.Sprite):
 			self.newArmRect=self.newArm.get_rect()
 			self.newArmRect.center=(self.rect.centerx,self.rect.centery-30)
 		else:
+			self.newArmVector=pygame.Vector2(self.direct,0)	
 			self.endX=self.newArmVector.x+self.rect.centerx
 			self.endY=self.newArmVector.y+self.rect.centery-30
 			self.newArmRect.center=(self.rect.centerx,self.rect.centery-30)

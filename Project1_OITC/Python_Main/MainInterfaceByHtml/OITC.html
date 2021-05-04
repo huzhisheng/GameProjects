@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="/eel.js"></script>
+	<link rel="stylesheet" type="text/css" href="./OITC.css">
+	<title>输出全靠吼</title>
+</head>
+<body>
+	<video class="openAnim" id="open_anim" autoplay="autoplay" muted >
+		<source src="Anim/open1.mp4" type="video/mp4" >
+	</video>
+	<div id="main_body" class="mainBody">
+		<div class="titleWrapper" id="title_wrapper">
+			<canvas id="title_anim" class="titleAnim"></canvas>
+			<div class="title" data-heading="OITC">OITC</div>
+			<h1>输出全靠吼</h1>
+		</div>
+		<div class="header">
+			<div class="banner">
+				<div class="wrap" id="banner">
+					<ul class="content"></ul>
+					<a href="javascript:;" class="prev">&#60;</a>
+					<a href="javascript:;" class="next">&#62;</a>
+				</div>
+			</div>
+			<div class="notice">
+				<p class="noticeTitle">最新公告</p>
+				<div><p>双击切换地图</p></div>
+				<div><p>Wx:shuaigehzs</p></div>
+				<div><p>QQ:2841954631</p></div>
+				<div><p>欢迎交流</p></div>
+				<div><p>记得打开7777端口</p></div>
+				<div><p>EXE打包完成，完结撒花</p></div>
+			</div>
+		</div>
+		<div id="page1_main" class="optionsWrapper">
+			<div class="options">
+				<a onclick="javascirpt: void (0); mapChoose(0)"><span>单人游戏</span></a>
+				<a onclick="javascirpt:void(0);runMultiGame()"><span>多人游戏</span></a>
+				<a onclick="javascirpt: void (0);setting()"><span>游戏设置</span></a>
+				<a onclick="javascirpt: void (0);selfdefine()"><span>自定义技能</span></a>
+				<a onclick="javascirpt: void (0);team()"><span>制作团队</span></a>
+				<a onclick="javascirpt:void(0);exit()"><span>退出游戏</span></a>
+			</div>
+		</div>
+
+		<div id="page2_mutigame" class="optionsWrapper">
+			<div class="mask" id="mask"></div>
+			<div class="options">
+				<a id="choice_create" onclick="javascirpt:void(0);createServer()"><span>创建游戏</span></a>
+				<a id="choice_join" onclick="javascirpt:void(0);joinServer()"><span>加入游戏</span></a>
+				<a id="choice_list" onclick="javascirpt:void(0);serversList()"><span>房间列表</span></a>
+				<a onclick="javascirpt:void(0);backMain()"><span>返回主界面</span></a>
+				<div class="joinServer" id="join_server">
+					<p><input type="text" placeholder="请在这里输入IP" id="IP" /></p>
+					<p><input type="text" placeholder="请在这里输入端口" id="port" /></p>
+					<a onclick="javascirpt:void(0);confirmServer()"><span>确认</span></a>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a onclick="javascirpt:void(0);cancelServer()"><span>取消</span></a>
+				</div>
+				<div class="createRoom" id="create_room">
+					<p><input type="text" placeholder="请在这里输入房间名" id="room_name" /></p>
+					<a onclick="javascirpt:void(0);confirmRoom()"><span>确认</span></a>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a onclick="javascirpt:void(0);cancelRoom()"><span>取消</span></a>
+				</div>
+				<div id="loading" class="loading">
+					<img src="PicAndLogo/loading.gif" />
+					<p style="font-size:0.8em;font-family:STCaiyun;">请稍等。。。</p>
+				</div>
+			</div>
+
+			<div id="show_ip" class="showIP"><span id="ip"></span></div>
+		</div>
+
+		<div id="page3_setting" class="optionsWrapper">
+			<div>
+				<div class="options">
+					<div id="is_window">
+						<input name="set_window" type='checkbox' value="full_screen" onclick="singleChoice(0)" /><a>全屏游戏</a>
+						<input name="set_window" type="checkbox" value="resizable_screen" checked onclick="singleChoice(1)" /><a>窗口化游戏</a>
+					</div>
+					<a onclick="javascirpt:void(0);backMain()"><span>返回主界面</span></a>
+				</div>
+			</div>
+		</div>
+
+		<div id="page4_team" class="optionsWrapper">
+			<div>
+				<div class="nameList">
+					<a><span>制作团队</span></a>
+					<p><span onmousemove="showIntro(1)" onmouseout="hideIntro()">潘延麒</span></p>
+					<p><span onmousemove="showIntro(2)" onmouseout="hideIntro()">胡智胜</span></p>
+					<p><span onmousemove="showIntro(3)" onmouseout="hideIntro()">张&nbsp;&nbsp;&nbsp;楠</span></p>
+					<a onclick="javascirpt:void(0);backMain()"><span>返回主界面</span></a>
+					<div class="nameListContent" id="member_intro1"><div id="pyq">潘延麒：团队代码核心综合者；UI制作；地图场景制作；邻接表设计；AI设计</div></div>
+					<div class="nameListContent" id="member_intro2"><div id="hzs">胡智胜：主要逻辑负责者；游戏逻辑制作；人物动画制作；AI设计</div></div>
+					<div class="nameListContent" id="member_intro3"><div id="zn">张楠：重要逻辑负责者；模数转换制作；声音识别制作；AI设计</div></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="page5_selfdefine" class="optionsWrapper">
+			<div class="mask" id="mask2"></div>
+			<div class="options">
+				<a onclick="javascirpt:void(0);setSkill()"><span>设置技能</span></a>
+				<a onclick="javascirpt:void(0);backMain()"><span>返回主界面</span></a>
+				<div class="skills" id="skills">
+					<img src="PicAndLogo/hideIcon.png" onmousemove="showSkill(1)" onmouseout="hideSkill(1)" onclick="confirmSkill(0)" />
+					<img src="PicAndLogo/wall.png" onmousemove="showSkill(2)" onmouseout="hideSkill(2)" onclick="confirmSkill(1)" />
+					<img src="PicAndLogo/wingIcon.png" onmousemove="showSkill(3)" onmouseout="hideSkill(3)" onclick="confirmSkill(2)" />
+
+				</div>
+
+				<div class="introduction" id="introduction" onclick="cancelSkill()">
+					<div class="skillsName" id="skills_name1">
+						暗影身法
+					</div>
+					<div class="skillsIntro" id="skills_intro1">
+						隐身一段时间 <br>
+						帅的一批的同时<br>
+						伤害还高
+					</div>
+
+					<div class="skillsName" id="skills_name2">
+						御墙之术
+					</div>
+					<div class="skillsIntro" id="skills_intro2">
+						凭空造一堵墙，能够阻挡攻击 <br>
+						帅的一批的同时<br>
+						还没有伤害
+					</div>
+
+					<div class="skillsName" id="skills_name3">
+						光翼降临
+					</div>
+					<div class="skillsIntro" id="skills_intro3">
+						能够飞行一段时间 <br>
+						帅的一批的同时<br>
+						还没有伤害
+					</div>
+				</div>
+
+				<div class="confirmSkill" id="confirm_skill">
+					<div>当确认你的技能后，点击录音按钮，按回车键结束录制<br>可以点击旁边阴影处关闭此对话框</div>
+					<div onclick="record()" class="recordButton"><p style="margin-top:38px; color:white;">Rec</p></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="page6_mapchoose" class="optionsWrapper">
+			<div class="mapChooseWrapper">
+				<div class="mapChoose" id="map_choose_page1">
+					<div class="mapWrapper" onclick="runGame(1)"><img src="PicAndLogo/skyBg.png" /><span>天空之城</span></div>
+					<div class="mapWrapper" onclick="runGame(2)"><img src="PicAndLogo/soilBg.png" /><span>初壤之地</span></div>
+					<div class="mapWrapper" onclick="runGame(3)"><img src="PicAndLogo/grassBg.png" /><span>草上之城</span></div>
+					<div class="mapWrapper" onclick="runGame(4)"><img src="PicAndLogo/stone.png" /><span>巨石山峰</span></div>
+					<div class="mapWrapper" onclick="runGame(5)"><img src="PicAndLogo/desertBg.png" /><span>大漠对决</span></div>
+				</div>
+				<div class="mapChoose" id="map_choose_page2">
+					<div class="mapWrapper" onclick="runGame(6)"><img src="PicAndLogo/caveBg.jpg" /><span>阴险洞窟</span></div>
+					<div class="mapWrapper" onclick="runGame(7)"><img src="PicAndLogo/cliffBg.jpg" /><span>云上高崖</span></div>
+					<div class="mapWrapper" onclick="runGame(8)"><img src="PicAndLogo/forestBg.png" /><span>碧绿之森</span></div>
+					<div class="mapWrapper" onclick="runGame(9)"><img src="PicAndLogo/oldBg.jpg" /><span>远古遗迹</span></div>
+					<div class="mapWrapper" onclick="runGame(10)"><img src="PicAndLogo/universeBg.png" /><span>浩瀚宇宙</span></div>
+				</div>
+				<!--
+					<div class="mapChoose" id="map_choose_page3">
+						<div class="mapWrapper" onclick="runGame(2)"><img src="PicAndLogo/soilBg.png" /><span>初壤之地</span></div>
+						<div class="mapWrapper" onclick="runGame(2)"><img src="PicAndLogo/soilBg.png" /><span>初壤之地</span></div>
+						<div class="mapWrapper" onclick="runGame(2)"><img src="PicAndLogo/soilBg.png" /><span>初壤之地</span></div>
+						<div class="mapWrapper" onclick="runGame(2)"><img src="PicAndLogo/soilBg.png" /><span>初壤之地</span></div>
+						<div class="mapWrapper" onclick="runGame(2)"><img src="PicAndLogo/soilBg.png" /><span>初壤之地</span></div>
+					</div>
+				-->
+			</div>
+			<div class="options">
+				<a onclick="javascirpt:void(0);backMain()"><span>返回主界面</span></a>
+			</div>
+		</div>
+
+		<div id="page7_serversList" class="optionsWrapper">
+			<!--后期添加map模块-->
+			<div class="serversListWrapper">
+				<div class="mapIntroWrapper">
+					<img id="not_load" src="PicAndLogo/notLoad.jpg" />
+					<img id="map_img" />
+					<div class="imgPush"></div>
+					<div class="mapIntro">
+						<p style="font-family:STCaiyun;" id="map_name">地图介绍</p>
+					</div>
+				</div>
+
+				<div class="serversListOut">
+					<div class="serversListInner" id="servers_list">
+						<p style="text-align:center;font-size:1.5em;font-family:STCaiyun">房间列表</p>
+					</div>
+
+				</div>
+			</div>
+			<div class="options">
+				<a onclick="javascirpt:void(0);backMain()"><span>返回主界面</span></a>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+<!--脚本页-->
+<script src="./OITC.js" ></script>
+<script type="text/javascript" color="122,197,205" pointColor="122,197,205" opacity='0.7' zIndex="-2" count="150" src="Canvas/dist/canvas-nest.js"></script>
