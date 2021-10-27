@@ -2,7 +2,7 @@
 
 - Game1 [OITC](./Project1_OITC)
 
-- Game2 [Ying](./Ying)
+- Game2 [Ying](./Project2_Ying)
 
 
 
