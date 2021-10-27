@@ -1,5 +1,10 @@
-- 整理自己在本科期间写过的一些小游戏；
+### Mini games
 
-- 在各个游戏项目的文件夹中含有详细介绍游戏的README；
-- 还有一些尝试做过的游戏因为完成度较低没放上来；
+- Game1 [OITC](./Project1_OITC)
+
+- Game2 [Ying](./Ying)
+
+
+
+To be continued...
 
